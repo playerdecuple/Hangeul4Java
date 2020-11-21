@@ -61,7 +61,16 @@ public class Hangeul {
                 } else {
 
                     int cho = getIndex(String.valueOf(nowChar), qw_a); // 초성 인덱스
-                    int jun = existsIn(String.valueOf(inputChar[i + 2]), qw_b) ? getIndex(String.valueOf(inputChar[i + 1]) + String.valueOf(inputChar[i + 2]), qw_b) : getIndex(String.valueOf(inputChar[i + 1]), qw_b); // 중성 인덱스
+                    int jun = getIndex(String.valueOf(inputChar[i + 1]), qw_b); // 중성 인덱스
+
+                    try {
+                        if (existsIn(String.valueOf(inputChar[i + 2]), qw_b)) {
+                            jun = getIndex(String.valueOf(inputChar[i + 1]) + String.valueOf(inputChar[i + 2]), qw_b);
+                        }
+                    } catch (ArrayIndexOutOfBoundsException e) {
+                        // ignore
+                    }
+
                     int jon = 0; // 종성 인덱스
 
                     try {
