@@ -61,33 +61,61 @@ public class Hangeul {
                 } else {
 
                     int cho = getIndex(String.valueOf(nowChar), qw_a); // 초성 인덱스
-                    int jun = getIndex(String.valueOf(inputChar[i + 1]), qw_b); // 중성 인덱스
+                    int jun = existsIn(String.valueOf(inputChar[i + 2]), qw_b) ? getIndex(String.valueOf(inputChar[i + 1]) + String.valueOf(inputChar[i + 2]), qw_b) : getIndex(String.valueOf(inputChar[i + 1]), qw_b); // 중성 인덱스
                     int jon = 0; // 종성 인덱스
 
                     try {
-                        jon = i + 3 >= inputChar.length ? 0 :
-                                existsIn(String.valueOf(inputChar[i + 3]), qw_b) ? 0 :
-                                        existsIn(String.valueOf(inputChar[i + 4]), qw_c) ?
-                                                getIndex(String.valueOf(inputChar[i + 2]) + String.valueOf(inputChar[i + 3]), qw_c) :
-                                                getIndex(String.valueOf(inputChar[i + 2]), qw_c); // 인덱스 구하는 코드
 
-                        if (jon < 0) jon = 0; // 오류 방지
-                        if (
-                                jon == 0
-                                        && !existsIn(String.valueOf(inputChar[i + 3]), qw_a)
-                                        && !existsIn(String.valueOf(inputChar[i + 3]), qw_b)
-                                        && !existsIn(String.valueOf(inputChar[i + 3]), qw_c)
-                        ) {
-                            jon = getIndex(String.valueOf(inputChar[i + 2]), qw_c);
+                        if (!existsIn(String.valueOf(inputChar[i + 2]), qw_b)) {
+                            jon = i + 3 >= inputChar.length ? 0 :
+                                    existsIn(String.valueOf(inputChar[i + 3]), qw_b) ? 0 :
+                                            existsIn(String.valueOf(inputChar[i + 4]), qw_c) ?
+                                                    getIndex(String.valueOf(inputChar[i + 2]) + String.valueOf(inputChar[i + 3]), qw_c) :
+                                                    getIndex(String.valueOf(inputChar[i + 2]), qw_c); // 인덱스 구하는 코드
 
-                            if (jon < 0) jon = 0;
-                        }
-                        if (
-                                !existsIn(String.valueOf(inputChar[i + 2]), qw_a)
-                                        && !existsIn(String.valueOf(inputChar[i + 2]), qw_b)
-                                        && !existsIn(String.valueOf(inputChar[i + 2]), qw_c)
-                        ) {
-                            jon = 0;
+                            if (jon < 0) jon = 0; // 오류 방지
+                            if (
+                                    jon == 0
+                                            && !existsIn(String.valueOf(inputChar[i + 3]), qw_a)
+                                            && !existsIn(String.valueOf(inputChar[i + 3]), qw_b)
+                                            && !existsIn(String.valueOf(inputChar[i + 3]), qw_c)
+                            ) {
+                                jon = getIndex(String.valueOf(inputChar[i + 2]), qw_c);
+
+                                if (jon < 0) jon = 0;
+                            }
+                            if (
+                                    !existsIn(String.valueOf(inputChar[i + 2]), qw_a)
+                                            && !existsIn(String.valueOf(inputChar[i + 2]), qw_b)
+                                            && !existsIn(String.valueOf(inputChar[i + 2]), qw_c)
+                            ) {
+                                jon = 0;
+                            }
+                        } else {
+                            jon = i + 4 >= inputChar.length ? 0 :
+                                    existsIn(String.valueOf(inputChar[i + 4]), qw_b) ? 0 :
+                                            existsIn(String.valueOf(inputChar[i + 5]), qw_c) ?
+                                                    getIndex(String.valueOf(inputChar[i + 3]) + String.valueOf(inputChar[i + 4]), qw_c) :
+                                                    getIndex(String.valueOf(inputChar[i + 3]), qw_c); // 인덱스 구하는 코드
+
+                            if (jon < 0) jon = 0; // 오류 방지
+                            if (
+                                    jon == 0
+                                            && !existsIn(String.valueOf(inputChar[i + 4]), qw_a)
+                                            && !existsIn(String.valueOf(inputChar[i + 4]), qw_b)
+                                            && !existsIn(String.valueOf(inputChar[i + 4]), qw_c)
+                            ) {
+                                jon = getIndex(String.valueOf(inputChar[i + 3]), qw_c);
+
+                                if (jon < 0) jon = 0;
+                            }
+                            if (
+                                    !existsIn(String.valueOf(inputChar[i + 3]), qw_a)
+                                            && !existsIn(String.valueOf(inputChar[i + 3]), qw_b)
+                                            && !existsIn(String.valueOf(inputChar[i + 3]), qw_c)
+                            ) {
+                                jon = 0;
+                            }
                         }
                     } catch (ArrayIndexOutOfBoundsException e) {
                         // ignore
