@@ -5,6 +5,15 @@ package com.DecupleProject;
 
 public class Hangeul {
 
+    private static final String[] qw_a = {"r", "R", "s", "e", "E", "f", "a", "q", "Q",
+            "t", "T", "d", "w", "W", "c", "z", "x", "b", "g"}; // 초성
+    private static final String[] qw_b = {"k", "o", "i", "O", "j", "p", "u", "P", "h",
+            "hk", "ho", "hl", "y", "n", "nj", "np", "nl",
+            "b", "m", "ml", "l"}; // 중성
+    private static final String[] qw_c = {"", "r", "R", "rt", "s", "sw", "sg", "e", "f",
+            "fr", "fa", "fq", "ft", "fx", "fv", "fg", "a", "q", "qt",
+            "t", "T", "d", "w", "c", "z", "x", "v", "g"}; // 종성
+
     private static boolean existsIn(String a, String[] b) {
 
         for (Object n : b) {
@@ -44,15 +53,6 @@ public class Hangeul {
             char nowChar = inputChar[i];
 
             try {
-
-                String[] qw_a = {"r", "R", "s", "e", "E", "f", "a", "q", "Q",
-                        "t", "T", "d", "w", "W", "c", "z", "x", "b", "g"}; // 초성
-                String[] qw_b = {"k", "o", "i", "O", "j", "p", "u", "P", "h",
-                        "hk", "ho", "hl", "y", "n", "nj", "np", "nl",
-                        "b", "m", "ml", "l"}; // 중성
-                String[] qw_c = {"", "r", "R", "rt", "s", "sw", "sg", "e", "f",
-                        "fr", "fa", "fq", "ft", "fx", "fv", "fg", "a", "q", "qt",
-                        "t", "T", "d", "w", "c", "z", "x", "v", "g"}; // 종성
 
                 String nowCharStr = String.valueOf(inputChar[i]);
 
