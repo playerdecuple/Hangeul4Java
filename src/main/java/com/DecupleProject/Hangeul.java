@@ -6,7 +6,7 @@ package com.DecupleProject;
 public class Hangeul {
 
     private static final String[] qw_a = {"r", "R", "s", "e", "E", "f", "a", "q", "Q",
-            "t", "T", "d", "w", "W", "c", "z", "x", "b", "g"}; // 초성
+            "t", "T", "d", "w", "W", "c", "z", "x", "v", "g"}; // 초성
     private static final String[] qw_b = {"k", "o", "i", "O", "j", "p", "u", "P", "h",
             "hk", "ho", "hl", "y", "n", "nj", "np", "nl",
             "b", "m", "ml", "l"}; // 중성
